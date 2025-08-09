@@ -1,437 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Raksha Bandhan, Pranav!</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Raksha Bandhan, Anna!</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-        /* --- CSS Custom Properties for Easy Theming --- */
-        :root {
-            --bg-grad-1: #ff9a9e;
-            --bg-grad-2: #fad0c4;
-            --bg-grad-3: #fbc2eb;
-            --card-grad-1: #fff1eb;
-            --card-grad-2: #ace0f9;
-            --primary-accent: #ff6b6b;
-            --secondary-accent: #4ecdc4;
-            --text-dark: #2c3e50;
-            --text-medium: #34495e;
-            --text-light: #555;
-            --card-shadow: rgba(0, 0, 0, 0.2);
-            --card-border: #ff6b6b;
-        }
+:root {
+    --bg-grad-1: #ff9a9e;
+    --bg-grad-2: #fad0c4;
+    --bg-grad-3: #fbc2eb;
+    --card-grad-1: #fff1eb;
+    --card-grad-2: #ace0f9;
+    --primary-accent: #ff6b6b;
+    --secondary-accent: #4ecdc4;
+    --text-dark: #2c3e50;
+    --text-medium: #34495e;
+    --text-light: #555;
+    --card-shadow: rgba(0, 0, 0, 0.2);
+    --card-border: #ff6b6b;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            /* Animated gradient background */
-            background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            overflow: hidden;
-            perspective: 1000px; /* Perspective for 3D effect */
-        }
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
+    perspective: 1000px;
+}
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+/* Floating sparkles */
+body::before {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 2px, transparent 3px);
+    background-size: 50px 50px;
+    animation: sparkleMove 30s linear infinite;
+}
 
-        .gift-card {
-            background: linear-gradient(135deg, var(--card-grad-1), var(--card-grad-2));
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 650px;
-            width: 100%;
-            box-shadow: 0 20px 40px var(--card-shadow);
-            border: 3px solid var(--card-border);
-            animation: fadeInUp 1.2s ease-out;
-            position: relative;
-            z-index: 2;
-            /* Smooth transition for the 3D tilt effect */
-            transition: transform 0.1s ease-out;
-            transform-style: preserve-3d;
-        }
+@keyframes sparkleMove {
+    from { transform: translate(0,0); }
+    to { transform: translate(-200px,-200px); }
+}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+.gift-card {
+    background: linear-gradient(135deg, var(--card-grad-1), var(--card-grad-2));
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 650px;
+    width: 100%;
+    box-shadow: 0 20px 40px var(--card-shadow);
+    border: 3px solid var(--card-border);
+    animation: fadeInUp 1.2s ease-out;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.2s ease-out;
+    transform-style: preserve-3d;
+    overflow: hidden;
+}
 
-        .rakhi-emoji {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            display: inline-block; /* Required for transform */
-            animation: rotateAndBob 3s ease-in-out infinite;
-        }
-        
-        
+/* Shimmer overlay for card */
+.gift-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(25deg);
+    animation: shimmer 4s infinite;
+}
 
-        @keyframes rotateAndBob {
-            0%, 100% { transform: rotate(-8deg) translateY(0px); }
-            50% { transform: rotate(8deg) translateY(-10px); }
-        }
+@keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(25deg); }
+    100% { transform: translateX(100%) rotate(25deg); }
+}
 
-        .main-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
-        }
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-top: 10px;
-        }
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-        .notes-container {
-            margin: 30px 0;
-        }
+.rakhi-emoji {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    display: inline-block;
+    animation: rakhiSpin 6s linear infinite;
+}
 
-        .notes-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-align: center;
-            margin-bottom: 20px;
-        }
+@keyframes rakhiSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
 
-        .note-item {
-            background: #ffffff;
-            margin: 15px 0;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            position: relative;
-            transform: scale(1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0; /* Initially hidden for staggered animation */
-            animation: slideIn 0.8s ease-out forwards;
-        }
-        
-        /* --- Staggered Animation for Note Items --- */
-        .note-item:nth-child(2) { animation-delay: 0.2s; }
-        .note-item:nth-child(3) { animation-delay: 0.4s; }
-        .note-item:nth-child(4) { animation-delay: 0.6s; }
-        .note-item:nth-child(5) { animation-delay: 0.8s; }
-        .note-item:nth-child(6) { animation-delay: 1.0s; }
-
-        .note-item:hover {
-            transform: scale(1.03) rotate(1deg);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .note-item::before {
-            content: '💌';
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            font-size: 1.2rem;
-            opacity: 0.7;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .note-item:hover::before {
-            transform: rotate(20deg) scale(1.2);
-        }
-
-        .note-text {
-            font-size: 1rem;
-            color: var(--text-medium);
-            line-height: 1.6;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .celebrate-btn {
-            background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent));
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            animation: pulse 2s infinite;
-        }
-
-        .celebrate-btn:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            transform: scale(1.05) translateY(-2px);
-            animation-play-state: paused; /* Pause pulse on hover */
-        }
-
-        .celebrate-btn:active {
-            transform: scale(0.98) translateY(0);
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-
-        /* --- Confetti Styling --- */
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #f00;
-            opacity: 0;
-            z-index: 1000;
-            pointer-events: none; /* Make them unclickable */
-            animation: confetti-fall 5s linear forwards;
-        }
-
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-10vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(110vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-        
-        /* --- Custom Modal Styling --- */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-        }
-
-        .modal-overlay.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 30px 40px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transform: scale(0.8);
-            transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-        }
-        
-        .modal-overlay.visible .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-content h2 {
-            font-size: 2rem;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-        }
-
-        .modal-content p {
-            font-size: 1.1rem;
-            color: var(--text-medium);
-            margin-bottom: 25px;
-        }
-
-        .close-btn {
-            background: var(--primary-accent);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .close-btn:hover {
-            background: var(--text-dark);
-        }
-
-        @media (max-width: 768px) {
-            .gift-card { padding: 30px 20px; }
-            .main-title { font-size: 2rem; }
-            .rakhi-emoji { font-size: 3rem; }
-        }
-    </style>
-</head>
-<body>
-    <div class="gift-card">
-        <div class="header">
-            <div class="rakhi-emoji">🪢</div>
-            <h1 class="main-title">Happy Raksha Bandhan, Pranav!</h1>
-            <p class="subtitle">Celebrating a bond stronger than anything. ❤️</p>
-        </div>
-
-        <div class="notes-container">
-            <h2 class="notes-title">Why You're the Best Brother 💫</h2>
-            <div class="note-item">
-                <p class="note-text">Your unwavering support is like a shield—always protecting and guiding with love.</p>
-            </div>
-            <div class="note-item">
-                <p class="note-text">You light up every room with your kindness and compassion. The world needs more like you.</p>
-            </div>
-            <div class="note-item">
-                <p class="note-text">The way you stand tall in every situation is truly admirable—you're an inspiration!</p>
-            </div>
-            <div class="note-item">
-                <p class="note-text">You never fail to bring a smile on everyone's face, no matter what’s happening around.</p>
-            </div>
-            <div class="note-item">
-                <p class="note-text">Creative, brilliant, and thoughtful—you’re more than just a brother, you're a blessing.</p>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p class="gift-message">Wishing you happiness, laughter, and endless joy this Raksha Bandhan! 🎁</p>
-            <button class="celebrate-btn">Celebrate Now 🎊</button>
-        </div>
-    </div>
-
-    <div class="modal-overlay">
-        <div class="modal-content">
-            <h2>Happy Raksha Bandhan!</h2>
-            <p>You’re deeply appreciated and endlessly loved, Pranav!</p>
-            <button class="close-btn">Close</button>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const celebrateBtn = document.querySelector('.celebrate-btn');
-            const modalOverlay = document.querySelector('.modal-overlay');
-            const closeBtn = document.querySelector('.close-btn');
-            const giftCard = document.querySelector('.gift-card');
-
-            // --- 3D Tilt Effect on Gift Card ---
-            giftCard.addEventListener('mousemove', (e) => {
-                const {
-                    left,
-                    top,
-                    width,
-                    height
-                } = giftCard.getBoundingClientRect();
-                const x = e.clientX - left - width / 2;
-                const y = e.clientY - top - height / 2;
-                const rotateX = (y / height) * -30; // Invert for natural feel
-                const rotateY = (x / width) * 30;
-                giftCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-            });
-
-            giftCard.addEventListener('mouseleave', () => {
-                giftCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-            });
-
-
-            // --- Celebration and Confetti Logic ---
-            const celebrate = () => {
-                // Launch confetti
-                for (let i = 0; i < 100; i++) {
-                    createConfetti();
-                }
-                // Show custom modal after a short delay
-                setTimeout(() => {
-                    modalOverlay.classList.add('visible');
-                }, 500);
-            };
-
-            const createConfetti = () => {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                
-                const colors = ['#ff6b6b', '#4ecdc4', '#ffe66d', '#ff9ff3', '#00d2d3'];
-                const shapes = ['square', 'circle', 'rect'];
-                const shape = shapes[Math.floor(Math.random() * shapes.length)];
-                
-                confetti.style.left = `${Math.random() * 100}vw`;
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = `${Math.random() * 2}s`;
-                confetti.style.animationDuration = `${3 + Math.random() * 4}s`; // Random duration
-                
-                const size = 8 + Math.random() * 8;
-                confetti.style.width = `${size}px`;
-
-                if (shape === 'rect') {
-                    confetti.style.height = `${size * 0.5}px`;
-                } else {
-                     confetti.style.height = `${size}px`;
-                }
-                
-                if (shape === 'circle') {
-                    confetti.style.borderRadius = '50%';
-                }
-                
-                document.body.appendChild(confetti);
-
-                // Remove confetti from DOM after animation ends to save memory
-                confetti.addEventListener('animationend', () => {
-                    confetti.remove();
-                });
-            };
-
-            // --- Modal close logic ---
-            const closeModal = () => {
-                modalOverlay.classList.remove('visible');
-            };
-
-            celebrateBtn.addEventListener('click', celebrate);
-            closeBtn.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) {
-                    closeModal();
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    background: linear-gradient(90deg, var(--primary-accent
